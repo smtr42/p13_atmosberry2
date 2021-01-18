@@ -41,7 +41,14 @@ INSTALLED_APPS = [
     "accounts.apps.AccountsConfig",
     "pages.apps.PagesConfig",
     # Third Party
+    "rest_framework",
 ]
+
+REST_FRAMEWORK = {
+    "DEFAULT_PERMISSION_CLASSES": [
+        "rest_framework.permissions.AllowAny",
+    ]
+}
 
 AUTH_USER_MODEL = "accounts.CustomUser"
 
