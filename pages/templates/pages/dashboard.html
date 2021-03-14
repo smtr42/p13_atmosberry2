@@ -5,12 +5,10 @@
 {% endblock nav%}
 
 {% block content %}
-<body class="flex h-screen bg-gray-100 font-sans">
+<body class="flex h-screen bg-gray-100 font-sans -bottom-0{% block gradient_class %}{% endblock %}">
 
     <!-- Side bar-->
     <div id="sidebar" class="h-screen w-16 menu bg-white text-white px-4 flex items-center nunito static fixed shadow">
-
-
     </div>
 
     <div class="flex flex-row flex-wrap flex-1 flex-grow content-start pl-16">
@@ -21,13 +19,13 @@
 
                 <div class="flex h-full justify-between items-center">
 
-                    <!--Search-->
+                    <!--Home-->
                     <div>
                         <a href="{% url 'pages:frontpage' %}" class="block py-1 md:py-3 pl-5 align-middle text-gray-600 no-underline hover:text-indigo-400">
                             <i class="fas fa-home fa-fw mr-3"></i><span class="w-full inline-block pb-1 md:pb-0 text-sm">Home</span>
                         </a>
                     </div>
-                    <!-- / Search-->
+                    <!-- / Home-->
 
                     <!--Menu-->
                     <div class="flex relative inline-block pr-6">
@@ -97,7 +95,7 @@
                             <div class="rounded-full p-3 bg-gray-300"><i class="fas fa-user-plus fa-fw fa-inverse text-indigo-500"></i></div>
                         </div>
                         <div class="flex-1">
-                            <h3 class="font-bold text-3xl">2 <span class="text-yellow-600"><i class="fas fa-caret-up"></i></span></h3>
+                            <h3 class="font-bold text-3xl">2 <span class="text-green-600"><i class="fas fa-caret-up"></i></span></h3>
                             <h5 class="font-bold text-gray-500">New Users</h5>
                         </div>
                     </div>
