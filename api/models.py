@@ -1,7 +1,12 @@
 from django.conf import settings
 from django.db import models
 
+#  admin
+#     djangorocks
 
+
+#firstuser & seconduser
+# mylittlepassword
 class Device(models.Model):
     """"""
 
@@ -32,12 +37,11 @@ class Address(models.Model):
     device = models.ForeignKey(Device, on_delete=models.CASCADE)
 
     def __str__(self):
-        return self.line1
+        return self.city
 
 
 class Sensor(models.Model):
     """"""
-
     TEMPERATURE = "T"
     HUMIDITY = "Hu"
     PRESSURE = "P"
@@ -59,4 +63,4 @@ class Sensor(models.Model):
     device = models.ForeignKey(Device, on_delete=models.CASCADE)
 
     def __str__(self):
-        return self.name, str(self.timestamp), str(measure)
+        return self.name
