@@ -2,14 +2,11 @@ from django.conf import settings
 from django.db import models
 
 #  admin
-#     djangorocks
-
-
+#     simpleisbetter
 #firstuser & seconduser
 # mylittlepassword
 class Device(models.Model):
     """"""
-
     name = models.CharField(max_length=50)
     # CONSTRAINT
     user = models.ForeignKey(
@@ -17,7 +14,6 @@ class Device(models.Model):
         related_name="device_user",
         on_delete=models.CASCADE,
     )
-
     def __str__(self):
         return self.name
 

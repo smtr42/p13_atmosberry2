@@ -37,17 +37,24 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+ 
     # Local
     "accounts.apps.AccountsConfig",
     "pages.apps.PagesConfig",
     "api.apps.ApiConfig",
+
     # Third Party
     "rest_framework",
+    "rest_framework.authtoken",
 ]
 
 REST_FRAMEWORK = {
     "DEFAULT_PERMISSION_CLASSES": [
         "rest_framework.permissions.IsAuthenticated",
+    ],
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.SessionAuthentication', # login & logout
+        'rest_framework.authentication.TokenAuthentication' # pass sssion id dans le header http pour l'API
     ]
 }
 
