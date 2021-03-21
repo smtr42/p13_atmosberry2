@@ -3,8 +3,13 @@ from django.db import models
 
 #  admin
 #     simpleisbetter
-#firstuser & seconduser
+#firstuser & seconduser & thirduser (thirduser@mymel.io)
 # mylittlepassword
+
+# thirduser token :7518d1fb613235ee073be414607c08a8394c25fd
+# https://www.django-rest-framework.org/api-guide/authentication/
+
+
 class Device(models.Model):
     """"""
     name = models.CharField(max_length=50)

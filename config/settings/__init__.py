@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    "django.contrib.sites",
  
     # Local
     "accounts.apps.AccountsConfig",
@@ -46,6 +47,11 @@ INSTALLED_APPS = [
     # Third Party
     "rest_framework",
     "rest_framework.authtoken",
+    "dj_rest_auth",
+    "dj_rest_auth.registration",
+    "allauth",
+    "allauth.account",
+    "allauth.socialaccount",
 ]
 
 REST_FRAMEWORK = {
@@ -152,3 +158,8 @@ STATICFILES_DIRS = [
 ]
 
 STATICFILES_STORAGE = "django.contrib.staticfiles.storage.StaticFilesStorage"
+
+# output email in the console 
+EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
+# host multiple website from one django project
+SITE_ID = 1
