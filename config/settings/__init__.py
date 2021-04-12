@@ -38,7 +38,7 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "django.contrib.sites",
- 
+
     # Local
     "accounts.apps.AccountsConfig",
     "pages.apps.PagesConfig",
@@ -159,7 +159,7 @@ STATICFILES_DIRS = [
 
 STATICFILES_STORAGE = "django.contrib.staticfiles.storage.StaticFilesStorage"
 
-# output email in the console 
+# output email in the console
 EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
 # host multiple website from one django project
 SITE_ID = 1
@@ -171,6 +171,7 @@ AUTHENTICATION_BACKENDS = (
     # `allauth` specific authentication methods, such as login by e-mail
     "allauth.account.auth_backends.AuthenticationBackend",
 )
+
 
 LOGIN_REDIRECT_URL = '/dashboard'
 ACCOUNT_LOGOUT_REDIRECT_URL = '/'

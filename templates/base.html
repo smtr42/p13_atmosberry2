@@ -7,9 +7,11 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>
-      Atmosberry
-    </title>
+
+    {% block title %}
+    <title>Atmosberry</title>
+    {% endblock title %}
+
     <meta name="description" content="" />
     <meta name="keywords" content="" />
     <meta name="author" content="" />
@@ -17,6 +19,8 @@
     <link rel="stylesheet" href="{% static '/styles/style.css' %}" />
     <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.1.0/dist/chart.min.js"></script>
+    
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/chartist.js/latest/chartist.min.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Nunito:400,700,800" rel="stylesheet">
@@ -39,7 +43,7 @@
     <nav id="header" class="fixed w-full z-10 top-0 text-white">
       <div class="w-full container mx-auto flex flex-wrap items-center justify-between mt-0 py-2">
         <div class="pl-4 flex items-center">
-          <a class="toggleColour text-white no-underline hover:no-underline font-bold text-2xl lg:text-4xl" href="#">
+          <a class="toggleColour text-white no-underline hover:no-underline font-bold text-2xl lg:text-4xl" href="{% url 'pages:frontpage' %}">
             <!--Icon from: http://www.potlabicons.com/ -->
             <svg class="h-8 fill-current inline" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512.005 512.005">
               <rect fill="#2a2a31" x="16.539" y="425.626" width="479.767" height="50.502" transform="matrix(1,0,0,1,0,0)" />
@@ -69,7 +73,17 @@
               <a class="inline-block text-black no-underline hover:text-gray-800 hover:text-underline py-2 px-4" href="{% url 'pages:dashboard' %}">Dashboard</a>
               </li>
             <li class="mr-3">
-              <a class="inline-block text-black no-underline hover:text-gray-800 hover:text-underline py-2 px-4" href="{% url 'account_logout' %}">Logout</a>
+            
+            
+              <form method="post" action="/accounts/logout/" class="inline-block text-black no-underline hover:text-gray-800 hover:text-underline py-2 px-4">
+              {% csrf_token %}
+                  <div class="flex items-center justify-between">
+                  <button class="bg-blue hover:bg-blue-dark text-black font-bold py-2 px-4 rounded" type="submit">
+                      Log out
+                  </button>
+                  </div>
+              </form>
+
             </li>
             {% else %}
             <li class="mr-3">
@@ -78,7 +92,6 @@
             <li class="mr-3">
               <a class="inline-block text-black no-underline hover:text-gray-800 hover:text-underline py-2 px-4" href="{% url 'account_login' %}">Login</a>
             </li>
-
           </ul>
           {% endif %}          
         </div>

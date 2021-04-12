@@ -1,7 +1,14 @@
 {% extends "base.html" %}
 {% load static %}
 
+
+{% block title %}
+<title>Dashboard</title>
+{% endblock title %}
+
+
 {% block nav%}
+
 {% endblock nav%}
 
 {% block content %}
@@ -22,7 +29,7 @@
                     <!--Home-->
                     <div>
                         <a href="{% url 'pages:frontpage' %}" class="block py-1 md:py-3 pl-5 align-middle text-gray-600 no-underline hover:text-indigo-400">
-                            <i class="fas fa-home fa-fw mr-3"></i><span class="w-full inline-block pb-1 md:pb-0 text-sm">Home</span>
+                            <i class="fas fa-home fa-fw mr-3"></i><span class="w-full inline-block pb-1 md:pb-0 text-sm" >Home</span>
                         </a>
                     </div>
                     <!-- / Home-->
@@ -31,12 +38,7 @@
                     <div class="flex relative inline-block pr-6">
                         <div class="relative text-sm">
                             <button id="userButton" class="flex items-center focus:outline-none mr-3">
-                                <img class="w-8 h-8 rounded-full mr-4" src="http://i.pravatar.cc/300" alt="Avatar of User"> <span class="hidden md:inline-block">USERNAME </span>
-                                <svg class="pl-2 h-2" version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 129 129" xmlns:xlink="http://www.w3.org/1999/xlink" enable-background="new 0 0 129 129">
-                                    <g>
-                                        <path d="m121.3,34.6c-1.6-1.6-4.2-1.6-5.8,0l-51,51.1-51.1-51.1c-1.6-1.6-4.2-1.6-5.8,0-1.6,1.6-1.6,4.2 0,5.8l53.9,53.9c0.8,0.8 1.8,1.2 2.9,1.2 1,0 2.1-0.4 2.9-1.2l53.9-53.9c1.7-1.6 1.7-4.2 0.1-5.8z"></path>
-                                    </g>
-                                </svg>
+                                <img class="w-8 h-8 rounded-full mr-4" src="{% static 'media/user_icon.png' %}" alt="{{ user.get_username }}"> <span class="hidden md:inline-block">{{ user.get_username }}</span>
                             </button>
                             <div id="userMenu" class="bg-white nunito rounded shadow-md mt-2 absolute mt-12 top-0 right-0 min-w-full overflow-auto z-30 invisible">
                                 <ul class="list-reset">
@@ -44,85 +46,47 @@
                                     <li>
                                         <hr class="border-t mx-2 border-gray-400">
                                     </li>
-                                    <li><a href="#" class="px-4 py-2 block text-gray-900 hover:bg-indigo-400 hover:text-white no-underline hover:no-underline">Logout</a></li>
+                                    <li>
+                                        <form method="post" action="/accounts/logout/" class="px-4 py-2 block text-gray-900 hover:bg-indigo-400 hover:text-white no-underline hover:no-underline">
+                                        {% csrf_token %}
+                                            <div class="flex items-center justify-between">
+                                            <button class="px-4 py-2 block text-gray-900 hover:bg-indigo-400 hover:text-white no-underline hover:no-underline" type="submit">
+                                                Logout
+                                            </button>
+                                            </div>
+                                        </form>
+                                    </li>
                                 </ul>
                             </div>
                         </div>
-
                     </div>
-
                     <!-- / Menu -->
-
                 </div>
             </nav>
         </div>
 
         <!--Dash Content -->
         <div id="dash-content" class="bg-gray-200 py-6 lg:py-0 w-full lg:max-w-sm flex flex-wrap content-start">
-
             <div class="w-1/2 lg:w-full">
                 <div class="border-2 border-gray-400 border-dashed hover:border-transparent hover:bg-white hover:shadow-xl rounded p-6 m-2 md:mx-10 md:my-6">
                     <div class="flex flex-col items-center">
-                        <div class="flex-shrink pr-4">
-                            <div class="rounded-full p-3 bg-gray-300"><i class="fa fa-wallet fa-fw fa-inverse text-indigo-500"></i></div>
-                        </div>
                         <div class="flex-1">
-                            <h3 class="font-bold text-3xl">$3249 <span class="text-green-500"><i class="fas fa-caret-up"></i></span></h3>
-                            <h5 class="font-bold text-gray-500">Total Revenue</h5>
+                            <h2 class="font-bold text-xl">You have {{ devices.count }} device(s) registered.</h2>
+                            <h2 class="font-bold text-xl">Queryset sensors : {{ sensors.count }} </h2>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <div class="w-1/2 lg:w-full">
-                <div class="border-2 border-gray-400 border-dashed hover:border-transparent hover:bg-white hover:shadow-xl rounded p-6 m-2 md:mx-10 md:my-6">
-                    <div class="flex flex-col items-center">
-                        <div class="flex-shrink pr-4">
-                            <div class="rounded-full p-3 bg-gray-300"><i class="fas fa-users fa-fw fa-inverse text-indigo-500"></i></div>
-                        </div>
-                        <div class="flex-1">
-                            <h3 class="font-bold text-3xl">249 <span class="text-orange-500"><i class="fas fa-exchange-alt"></i></span></h3>
-                            <h5 class="font-bold text-gray-500">Total Users</h5>
-                        </div>
-                    </div>
-                </div>
-            </div>
 
-            <div class="w-1/2 lg:w-full">
-                <div class="border-2 border-gray-400 border-dashed hover:border-transparent hover:bg-white hover:shadow-xl rounded p-6 m-2 md:mx-10 md:my-6">
-                    <div class="flex flex-col items-center">
-                        <div class="flex-shrink pr-4">
-                            <div class="rounded-full p-3 bg-gray-300"><i class="fas fa-user-plus fa-fw fa-inverse text-indigo-500"></i></div>
-                        </div>
-                        <div class="flex-1">
-                            <h3 class="font-bold text-3xl">2 <span class="text-green-600"><i class="fas fa-caret-up"></i></span></h3>
-                            <h5 class="font-bold text-gray-500">New Users</h5>
-                        </div>
-                    </div>
-                </div>
-            </div>
 
-            <div class="w-1/2 lg:w-full">
-                <div class="border-2 border-gray-400 border-dashed hover:border-transparent hover:bg-white hover:shadow-xl rounded p-6 m-2 md:mx-10 md:my-6">
-                    <div class="flex flex-col items-center">
-                        <div class="flex-shrink pr-4">
-                            <div class="rounded-full p-3 bg-gray-300"><i class="fas fa-server fa-fw fa-inverse text-indigo-500"></i></div>
-                        </div>
-                        <div class="flex-1">
-                            <h3 class="font-bold text-3xl">152 days</h3>
-                            <h5 class="font-bold text-gray-500">Server Uptime</h5>
-                        </div>
-                    </div>
-                </div>
-            </div>
+
 
         </div>
 
         <!--Graph Content -->
         <div id="main-content" class="w-full flex-1">
-
             <div class="flex flex-1 flex-wrap">
-
                 <div class="w-full xl:w-2/3 p-6 xl:max-w-6xl">
 
                     <!--"Container" for the graphs"-->
@@ -130,7 +94,7 @@
 
                         <!--Graph Card-->
                         <div class="border-b p-3">
-                            <h5 class="font-bold text-black">Graph</h5>
+                            <h5 class="font-bold text-black">Temperature Graph on the last 48h</h5>
                         </div>
                         <div class="p-5">
                             <div class="ct-chart ct-golden-section" id="chart1"></div>
@@ -186,38 +150,40 @@
                     <!--"Container" for the graphs"-->
                     <div class="max-w-sm lg:max-w-3xl xl:max-w-5xl">
 
-                        <!--Graph Card-->
+
+
+                        <div class="p-5">
+                            <a class="mx-auto lg:mx-0 hover:underline bg-white text-gray-800 font-bold rounded-full my-6 py-4 px-8 shadow-lg focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out">
+                                Add a Device
+                            </a>
+                        </div>
+
+
+                        <div class="p-5">
+                            <a class="mx-auto lg:mx-0 hover:underline bg-white text-gray-800 font-bold rounded-full my-6 py-4 px-8 shadow-lg focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out">
+                                Add a Sensor
+                            </a>
+                        </div>
 
                         <div class="border-b p-3">
-                            <h5 class="font-bold text-black">Graph</h5>
+                        </div>
+
+                        <div class="p-5">
+                            <a href="{% url 'pages:refresh' %}" class="mx-auto lg:mx-0 hover:underline bg-red-200 text-gray-800 font-bold rounded-full my-6 py-4 px-8 shadow-lg focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out">
+                                Refresh Token mm
+                            </a>
                         </div>
                         <div class="p-5">
-                            <div class="ct-chart ct-golden-section" id="chart2"></div>
+                        <p>Warning ! Resetting the token will disconnect anything using the old token. You will need to update each device with the new token.</p>
                         </div>
-
-                        <!--/Graph Card-->
-
-                        <!--Graph Card-->
                         <div class="border-b p-3">
-                            <h5 class="font-bold text-black">Graph</h5>
+                            <h5 class="font-bold text-black">Current token </h5>
                         </div>
-                        <div class="p-5">
-                            <div class="ct-chart ct-golden-section" id="chart3"></div>
-                        </div>
-
-                        <!--/Graph Card-->
-
-                        <!--Graph Card-->
-
+                            {% for tok in token %}
+                            <h5 class="font-bold text-l">{{ tok }}</h5>
+                            {% endfor %}
                         <div class="border-b p-3">
-                            <h5 class="font-bold text-black">Graph</h5>
                         </div>
-                        <div class="p-5">
-                            <div class="ct-chart ct-golden-section" id="chart4"></div>
-                        </div>
-
-                        <!--/Graph Card-->
-
                         <!--Template Card-->
                         <div class="p-3">
                             <div class="border-b p-3">
@@ -228,186 +194,20 @@
                             </div>
                         </div>
                         <!--/Template Card-->
-
                     </div>
-
                 </div>
-
             </div>
-
         </div>
-
     </div>
 
-    <script src="https://cdn.jsdelivr.net/chartist.js/latest/chartist.min.js"></script>
-    <script>
-        /* Refer to https://gionkunz.github.io/chartist-js/examples.html for setting up the graphs */
-
-        var mainChart = new Chartist.Line('#chart1', {
-            labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
-            series: [
-                [1, 5, 2, 5, 4, 3],
-                [2, 3, 4, 8, 1, 2],
-                [5, 4, 3, 2, 1, 0.5]
-            ]
-        }, {
-            low: 0,
-            showArea: true,
-            showPoint: false,
-            fullWidth: true
-        });
-
-        mainChart.on('draw', function(data) {
-            if (data.type === 'line' || data.type === 'area') {
-                data.element.animate({
-                    d: {
-                        begin: 1000 * data.index,
-                        dur: 1000,
-                        from: data.path.clone().scale(1, 0).translate(0, data.chartRect.height()).stringify(),
-                        to: data.path.clone().stringify(),
-                        easing: Chartist.Svg.Easing.easeOutQuint
-                    }
-                });
-            }
-        });
-
-        var chartScatter = new Chartist.Line('#chart2', {
-            labels: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12'],
-            series: [
-                [12, 9, 7, 8, 5, 4, 6, 2, 3, 3, 4, 6],
-                [4, 5, 3, 7, 3, 5, 5, 3, 4, 4, 5, 5],
-                [5, 3, 4, 5, 6, 3, 3, 4, 5, 6, 3, 4],
-                [3, 4, 5, 6, 7, 6, 4, 5, 6, 7, 6, 3]
-            ]
-        }, {
-            low: 0
-        });
-
-        chartScatter.on('draw', function(data) {
-            if (data.type === 'line' || data.type === 'area') {
-                data.element.animate({
-                    d: {
-                        begin: 500 * data.index,
-                        dur: 1000,
-                        from: data.path.clone().scale(1, 0).translate(0, data.chartRect.height()).stringify(),
-                        to: data.path.clone().stringify(),
-                        easing: Chartist.Svg.Easing.easeOutQuint
-                    }
-                });
-            }
-        });
-
-        var chartBar = new Chartist.Bar('#chart3', {
-            labels: ['Q1', 'Q2', 'Q3', 'Q4'],
-            series: [
-                [800000, 1200000, 1400000, 1300000],
-                [200000, 400000, 500000, 300000],
-                [100000, 200000, 400000, 600000]
-            ]
-        }, {
-            stackBars: true,
-            axisY: {
-                labelInterpolationFnc: function(value) {
-                    return (value / 1000) + 'k';
-                }
-            }
-        })
-
-        chartBar.on('draw', function(data) {
-            if (data.type === 'bar') {
-                data.element.attr({
-                        style: 'stroke-width: 30px'
-                    }),
-                    data.element.animate({
-                        y2: {
-                            dur: '0.5s',
-                            from: data.y1,
-                            to: data.y2
-                        }
-                    });
-            }
-        });
-
-        var chartPie = new Chartist.Pie('#chart4', {
-            series: [10, 20, 50, 20, 5, 50, 15],
-            labels: [1, 2, 3, 4, 5, 6, 7]
-        }, {
-            donut: true,
-            showLabel: true
-        });
-
-        chartPie.on('draw', function(data) {
-            if (data.type === 'slice') {
-                var pathLength = data.element._node.getTotalLength();
-                data.element.attr({
-                    'stroke-dasharray': pathLength + 'px ' + pathLength + 'px'
-                });
-
-                var animationDefinition = {
-                    'stroke-dashoffset': {
-                        id: 'anim' + data.index,
-                        dur: 200,
-                        from: -pathLength + 'px',
-                        to: '0px',
-                        easing: Chartist.Svg.Easing.easeOutQuint,
-                        fill: 'freeze'
-                    }
-                };
-
-                if (data.index !== 0) {
-                    animationDefinition['stroke-dashoffset'].begin = 'anim' + (data.index - 1) + '.end';
-                }
-
-                data.element.attr({
-                    'stroke-dashoffset': -pathLength + 'px'
-                });
-
-                data.element.animate(animationDefinition, false);
-            }
-        });
-    </script>
-
-    <script>
-        /*Toggle dropdown list*/
-        /*https://gist.github.com/slavapas/593e8e50cf4cc16ac972afcbad4f70c8*/
-
-        var userMenuDiv = document.getElementById("userMenu");
-        var userMenu = document.getElementById("userButton");
-
-        document.onclick = check;
-
-        function check(e) {
-            var target = (e && e.target) || (event && event.srcElement);
-
-            //User Menu
-            if (!checkParent(target, userMenuDiv)) {
-                // click NOT on the menu
-                if (checkParent(target, userMenu)) {
-                    // click on the link
-                    if (userMenuDiv.classList.contains("invisible")) {
-                        userMenuDiv.classList.remove("invisible");
-                    } else {
-                        userMenuDiv.classList.add("invisible");
-                    }
-                } else {
-                    // click both outside link and outside menu, hide menu
-                    userMenuDiv.classList.add("invisible");
-                }
-            }
-
-        }
-
-        function checkParent(t, elm) {
-            while (t.parentNode) {
-                if (t == elm) {
-                    return true;
-                }
-                t = t.parentNode;
-            }
-            return false;
-        }
-    </script>
 {% endblock content %}
+
+{% block scripts %}
+    <script src="https://cdn.jsdelivr.net/chartist.js/latest/chartist.min.js"></script>
+    <script type="application/javascript" src="{% static '/js/chart.js' %}"></script>
+    <script type="application/javascript" src="{% static '/js/menu.js' %}"></script>
+{% endblock scripts %}
+
 
 {% block footer %}
 <!--Footer-->

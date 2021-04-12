@@ -21,3 +21,15 @@ class SensorSerializer(serializers.ModelSerializer):
     #     for readings in readings_data:
     #         Reading.objects.create(sensor=sensor, **readings)
     #     return sensor
+
+
+class AddressSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Address
+        fields = ('lat', 'lon', 'user')
+
+
+class TemperatureSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Sensor
+        fields = ('name', 'timestamp', 'measure', 'sensor_type', 'device')

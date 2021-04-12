@@ -1,6 +1,7 @@
 // initialize Leaflet
-var map = L.map('map').setView([46.715, 1.71], 6);
-L.marker([46.715, 1.71]).bindPopup('The center of the world').addTo(map);
+let map = L.map('map').setView([46.715, 1.71], 6);
+
+// L.marker([46.715, 1.71]).bindPopup('The center of the world').addTo(map);
 
 // add the OpenStreetMap tiles
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -15,9 +16,23 @@ L.control.scale().addTo(map);
 L.marker([46.715, 1.71]).bindPopup('The center of the world').addTo(map);
 
 
-var circle = L.circle([46.715, 1.71], {
-  color: 'red',
-  fillColor: '#f03',
-  fillOpacity: 0.5,
-  radius: 5000
-}).addTo(map);
+// let circle = L.circle([46.715, 1.71], {
+//   color: 'red',
+//   fillColor: '#f03',
+//   fillOpacity: 0.5,
+//   radius: 5000
+// }).addTo(map);
+
+let url = "http://127.0.0.1:8000/api/v1/loc/"
+
+function get_map_data(url) {
+  fetch(url)
+  .then(response => response.json())
+  .then(function(data) {
+    for (var i in data) {
+      L.marker([data[i].lat, data[i].lon]).bindPopup('Meow').addTo(map);
+    }
+  })
+}
+
+get_map_data(url);
