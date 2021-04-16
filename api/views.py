@@ -40,7 +40,6 @@ class AddressView(generics.ListCreateAPIView):
 class TemperatureView(generics.ListCreateAPIView):
     serializer_class = TemperatureSerializer
     permission_classes = (IsAuthor0rReaOnly,)
-    
 
     def get_queryset(self):
         thetime = datetime.now() - timedelta(hours=48)
