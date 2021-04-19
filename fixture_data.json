@@ -1,0 +1,49 @@
+[
+    {
+        "model": "accounts.customuser",
+        "pk": 1,
+        "fields": {
+            "username": "loggeduser",
+            "first_name": "firstname",
+            "last_login": null,
+            "last_name": "lastname",
+            "email": "test@test.com",
+            "is_staff": false,
+            "is_active": true,
+            "date_joined": "2020-12-07T09:32:50.998Z",
+            "password": "!M4dygH3ZWfd0214U59OR9nlwsRJ94HUZtvQciG8y"
+        }
+    },
+    {
+        "model": "api.device",
+        "pk": 2,
+        "fields": {
+            "name": "raspberry_device",
+            "user": 1
+        }
+    },
+    {
+        "model": "api.address",
+        "pk": 1,
+        "fields": {
+            "lat": 48.862725,
+            "lon": 2.287592,
+            "city": "Paris",
+            "country": "France",
+            "user": 1,
+            "device": 2
+
+        }
+    },
+    {
+        "model": "api.sensor",
+        "pk": 1,
+        "fields": {
+            "name": 48.862725,
+            "timestamp": "2021-04-07T09:32:50.998Z",
+            "measure": 12.2,
+            "sensor_type": "T",
+            "device": 2
+        }
+    }
+    ]

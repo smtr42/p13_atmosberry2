@@ -9,3 +9,4 @@ def test_1():
     device = Device.objects.all()
     print(device)
     assert device.__str__() == "Mise à jour complète du parc vers win10"
+
