@@ -1,12 +1,16 @@
-from rest_framework.utils import serializer_helpers
-from api.models import Sensor
-from rest_framework import generics, permissions
-from .models import Sensor, Device, Address
-from .serializers import SensorSerializer, AddressSerializer, TemperatureSerializer
-from rest_framework.response import Response
-from .permissions import IsAuthor0rReaOnly
-from datetime import datetime, timedelta
+from datetime import timedelta
+
 from django.utils import timezone
+from rest_framework import generics
+from rest_framework.response import Response
+
+from .models import Address, Device, Sensor
+from .permissions import IsAuthor0rReaOnly
+from .serializers import (
+    AddressSerializer,
+    SensorSerializer,
+    TemperatureSerializer,
+)
 
 
 class SensorView(generics.ListCreateAPIView):
@@ -23,7 +27,7 @@ class SensorView(generics.ListCreateAPIView):
             name=reading_data["name"],
             timestamp=reading_data["timestamp"],
             measure=reading_data["measure"],
-            sensor_type=reading_data["sensor_type"]
+            sensor_type=reading_data["sensor_type"],
         )
         new_reading.save()
         serializer = SensorSerializer(new_reading)

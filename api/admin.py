@@ -1,6 +1,6 @@
 from django.contrib import admin
-from .models import Sensor, Device, Address
 
+from .models import Address, Device, Sensor
 
 admin.site.register(Sensor)
 admin.site.register(Address)

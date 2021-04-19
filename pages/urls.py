@@ -1,6 +1,13 @@
 from django.urls import path
 
-from .views import dashboard, frontpage, refresh_token, add_device, add_sensor, about
+from .views import (
+    about,
+    add_device,
+    add_sensor,
+    dashboard,
+    frontpage,
+    refresh_token,
+)
 
 urlpatterns = [
     path("", frontpage, name="frontpage"),
@@ -10,4 +17,3 @@ urlpatterns = [
     path("add_device", add_device, name="add_device"),
     path("add_sensor", add_sensor, name="add_sensor"),
 ]
-

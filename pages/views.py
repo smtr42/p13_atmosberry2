@@ -1,13 +1,15 @@
-from django.shortcuts import render
-from api.models import Device, Sensor, Address
-from django.contrib.auth.decorators import login_required
-from accounts.models import CustomUser
-from rest_framework.authtoken.models import Token
 import binascii
 import os
+
 from django.apps import apps
-from .forms import SensorForm, DeviceForm
+from django.contrib.auth.decorators import login_required
 from django.http import Http404
+from django.shortcuts import render
+from rest_framework.authtoken.models import Token
+
+from api.models import Device, Sensor
+
+from .forms import DeviceForm, SensorForm
 
 
 def frontpage(request):
@@ -21,10 +23,22 @@ def about(request):
 @login_required
 def dashboard(request):
     user = request.user
-    devices = Device.objects.filter(user=user).values("address__lat", "name", "address__lon")
+    devices = Device.objects.filter(user=user).values(
+        "address__lat", "name", "address__lon"
+    )
     sensors = Sensor.objects.filter(device__user=user)
     toke = Token.objects.filter(user=user)
-    return render(request, "pages/dashboard.html", {"devices": devices, "sensors": sensors, "token": toke, 'device_form': DeviceForm, "sensor_form": SensorForm(user)})
+    return render(
+        request,
+        "pages/dashboard.html",
+        {
+            "devices": devices,
+            "sensors": sensors,
+            "token": toke,
+            "device_form": DeviceForm,
+            "sensor_form": SensorForm(user),
+        },
+    )
 
 
 @login_required
@@ -51,7 +65,9 @@ def add_device(request):
         lon = form.cleaned_data.get("lon")
         device_model.objects.create(user=user, name=device_name)
         device = device_model.objects.get(user=user, name=device_name)
-        address_model.objects.create(user=user, lat=lat, lon=lon, device=device)
+        address_model.objects.create(
+            user=user, lat=lat, lon=lon, device=device
+        )
     return dashboard(request)
 
 
@@ -61,7 +77,6 @@ def add_sensor(request):
         raise Http404("Bad request")
     user = request.user
     form = SensorForm(user, request.POST)
-    device_model = apps.get_model("api", "Sensor")
 
     if form.is_valid():
         print(form.cleaned_data)

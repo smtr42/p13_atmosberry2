@@ -1,17 +1,15 @@
-"""
-Serializers transform data into Json andscpecify wich
-fields to include or exclude.
-"""
+"""Serializers transform data into Json andscpecify wich fields to include or
+exclude."""
 
 from rest_framework import serializers
-from .models import Device, Sensor, Address
+
+from .models import Address, Sensor
 
 
 class SensorSerializer(serializers.ModelSerializer):
-
     class Meta:
         model = Sensor
-        fields = ('name', 'timestamp', 'measure', 'sensor_type')
+        fields = ("name", "timestamp", "measure", "sensor_type")
 
     # def create(self, validated_data):
     #     readings_data = validated_data.pop('measure')
@@ -26,10 +24,10 @@ class SensorSerializer(serializers.ModelSerializer):
 class AddressSerializer(serializers.ModelSerializer):
     class Meta:
         model = Address
-        fields = ('lat', 'lon', 'user')
+        fields = ("lat", "lon", "user")
 
 
 class TemperatureSerializer(serializers.ModelSerializer):
     class Meta:
         model = Sensor
-        fields = ('name', 'timestamp', 'measure', 'sensor_type', 'device')
+        fields = ("name", "timestamp", "measure", "sensor_type", "device")

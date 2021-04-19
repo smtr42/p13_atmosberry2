@@ -1,6 +1,6 @@
+# from django.urls import reverse
 from pytest import mark
 
-from django.urls import reverse
 from api.models import Device
 
 

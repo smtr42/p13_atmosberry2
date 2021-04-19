@@ -3,7 +3,7 @@ from django.db import models
 
 #  admin
 #     simpleisbetter
-#firstuser & seconduser & thirduser (thirduser@mymel.io)
+# firstuser & seconduser & thirduser (thirduser@mymel.io)
 # mylittlepassword
 
 # thirduser token :7518d1fb613235ee073be414607c08a8394c25fd
@@ -12,6 +12,7 @@ from django.db import models
 
 class Device(models.Model):
     """"""
+
     name = models.CharField(max_length=50, unique=True)
     # CONSTRAINT
     user = models.ForeignKey(
@@ -26,6 +27,7 @@ class Device(models.Model):
 
 class Address(models.Model):
     """"""
+
     lat = models.DecimalField(max_digits=9, decimal_places=6)
     lon = models.DecimalField(max_digits=9, decimal_places=6)
     city = models.CharField(max_length=150)
@@ -44,6 +46,7 @@ class Address(models.Model):
 
 class Sensor(models.Model):
     """"""
+
     TEMPERATURE = "T"
     HUMIDITY = "Hu"
     PRESSURE = "P"

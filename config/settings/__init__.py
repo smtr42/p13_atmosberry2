@@ -38,12 +38,10 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "django.contrib.sites",
-
     # Local
     "accounts.apps.AccountsConfig",
     "pages.apps.PagesConfig",
     "api.apps.ApiConfig",
-
     # Third Party
     "rest_framework",
     "rest_framework.authtoken",
@@ -58,10 +56,10 @@ REST_FRAMEWORK = {
     "DEFAULT_PERMISSION_CLASSES": [
         "rest_framework.permissions.IsAuthenticated",
     ],
-    'DEFAULT_AUTHENTICATION_CLASSES': [
-        'rest_framework.authentication.SessionAuthentication', # login & logout
-        'rest_framework.authentication.TokenAuthentication' # pass sssion id dans le header http pour l'API
-    ]
+    "DEFAULT_AUTHENTICATION_CLASSES": [
+        "rest_framework.authentication.SessionAuthentication",  # login & logout
+        "rest_framework.authentication.TokenAuthentication",  # pass sssion id dans le header http pour l'API
+    ],
 }
 
 AUTH_USER_MODEL = "accounts.CustomUser"
@@ -167,11 +165,10 @@ SITE_ID = 1
 AUTHENTICATION_BACKENDS = (
     # Needed to login by username in Django admin, regardless of `allauth`
     "django.contrib.auth.backends.ModelBackend",
-
     # `allauth` specific authentication methods, such as login by e-mail
     "allauth.account.auth_backends.AuthenticationBackend",
 )
 
 
-LOGIN_REDIRECT_URL = '/dashboard'
-ACCOUNT_LOGOUT_REDIRECT_URL = '/'
+LOGIN_REDIRECT_URL = "/dashboard"
+ACCOUNT_LOGOUT_REDIRECT_URL = "/"
