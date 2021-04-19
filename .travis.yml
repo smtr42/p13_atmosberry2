@@ -12,7 +12,7 @@ before_script:
   - Xvfb :99 -screen 0 1024x768x24 > /dev/null 2>&1 &
   - sleep 3
 
-env: DJANGO_SETTINGS_MODULE="config.settings.production"
+env: DJANGO_SETTINGS_MODULE="config.settings"
 
 services:
   - postgresql
