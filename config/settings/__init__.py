@@ -10,6 +10,7 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 
 from pathlib import Path
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent.parent
@@ -64,6 +65,34 @@ REST_FRAMEWORK = {
 
 AUTH_USER_MODEL = "accounts.CustomUser"
 
+
+LOGGING = {
+    "version": 1,
+    # Version of logging
+    "disable_existing_loggers": False,
+    # disable logging
+    # Handlers #############################################################
+    "handlers": {
+        "file": {
+            "level": "INFO",
+            "class": "logging.FileHandler",
+            "filename": "app_log.log",
+        },
+        ########################################################################
+        "console": {
+            "class": "logging.StreamHandler",
+            "level": "INFO",
+        },
+    },
+    # Loggers ####################################################################
+    "loggers": {
+        "": {
+            "handlers": ["file", "console"],
+            "level": "INFO",
+            "propagate": True,
+        },
+    },
+}
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",

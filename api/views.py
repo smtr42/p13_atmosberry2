@@ -3,6 +3,7 @@ from datetime import timedelta
 from django.utils import timezone
 from rest_framework import generics
 from rest_framework.response import Response
+from rest_framework.exceptions import PermissionDenied
 
 from .models import Address, Device, Sensor
 from .permissions import IsAuthor0rReaOnly
@@ -47,6 +48,8 @@ class TemperatureView(generics.ListCreateAPIView):
     permission_classes = (IsAuthor0rReaOnly,)
 
     def get_queryset(self):
+        if not self.request.user.id:
+            raise PermissionDenied(detail=None, code=None)
         device = Device.objects.filter(user=self.request.user)
         aware = timezone.now() - timedelta(hours=24)
         return Sensor.objects.filter(device=device[0], timestamp__gte=aware)

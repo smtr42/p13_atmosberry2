@@ -1,4 +1,5 @@
 import binascii
+import logging
 import os
 
 from django.apps import apps
@@ -11,6 +12,8 @@ from api.models import Device, Sensor
 
 from .forms import DeviceForm, SensorForm
 
+logger = logging.getLogger(__name__)
+
 
 def frontpage(request):
     return render(request, "pages/index.html")
@@ -22,6 +25,8 @@ def about(request):
 
 @login_required
 def dashboard(request):
+    logger.info("################# test")
+
     user = request.user
     devices = Device.objects.filter(user=user).values(
         "address__lat", "name", "address__lon"
@@ -65,9 +70,7 @@ def add_device(request):
         lon = form.cleaned_data.get("lon")
         device_model.objects.create(user=user, name=device_name)
         device = device_model.objects.get(user=user, name=device_name)
-        address_model.objects.create(
-            user=user, lat=lat, lon=lon, device=device
-        )
+        address_model.objects.create(user=user, lat=lat, lon=lon, device=device)
     return dashboard(request)
 
 

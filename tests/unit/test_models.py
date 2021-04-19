@@ -1,12 +1,38 @@
 # from django.urls import reverse
 from pytest import mark
 
-from api.models import Device
+from api.models import Device, Address, Sensor
+from django.contrib.auth import get_user_model
+from django.conf import settings
 
 
 @mark.django_db
-def test_1():
-    device = Device.objects.all()
-    print(device)
-    assert device.__str__() == "Mise à jour complète du parc vers win10"
+def test_device():
+    user = get_user_model()
+    user = user.objects.get(id=1)
+    assert user.__str__() == "loggeduser"
 
+
+@mark.django_db
+def test_device():
+    device = Device.objects.get(id=2)
+    assert device.__str__() == "raspberry_device"
+
+
+@mark.django_db
+def test_address():
+    address = Address.objects.get(id=1)
+    assert address.__str__() == "Paris"
+
+
+@mark.django_db
+def test_sensor():
+    sensor = Sensor.objects.get(id=1)
+    assert sensor.__str__() == "BMP_280"
+
+
+@mark.django_db
+def test_user_create():
+    user = get_user_model()
+    user.objects.create_user("john", "lennon@thebeatles.com", "johnpassword")
+    assert user.objects.count() == 2

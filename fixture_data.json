@@ -39,11 +39,11 @@
         "model": "api.sensor",
         "pk": 1,
         "fields": {
-            "name": 48.862725,
+            "name": "BMP_280",
             "timestamp": "2021-04-07T09:32:50.998Z",
             "measure": 12.2,
             "sensor_type": "T",
             "device": 2
         }
     }
-    ]
+]
