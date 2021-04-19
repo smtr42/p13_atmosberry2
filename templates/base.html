@@ -66,7 +66,7 @@
         <div class="w-full flex-grow lg:flex lg:items-center lg:w-auto hidden mt-2 lg:mt-0 bg-white lg:bg-transparent text-black p-4 lg:p-0 z-20" id="nav-content">
           <ul class="list-reset lg:flex justify-end flex-1 items-center">
             <li class="mr-3">
-              <a class="inline-block py-2 px-4 text-black font-bold no-underline" href="#">About</a>
+              <a class="inline-block py-2 px-4 text-black font-bold no-underline" href="{% url 'pages:about' %}">About</a>
             </li>
             {% if user.is_authenticated %}
             <li class="mr-3">
@@ -114,7 +114,7 @@
       <div class="container mx-auto px-8">
         <div class="w-full flex flex-col md:flex-row py-6">
           <div class="flex-1 mb-6 text-black">
-            <a class="text-blue-600 no-underline hover:no-underline font-bold text-2xl lg:text-4xl" href="#">
+            <a class="text-blue-600 no-underline hover:no-underline font-bold text-2xl lg:text-4xl" href="{% url 'pages:frontpage' %}">
               ATMOSBERRY
             </a>
           </div>
@@ -122,10 +122,7 @@
             <p class="uppercase text-gray-500 md:mb-6">Links</p>
             <ul class="list-reset mb-6">
               <li class="mt-2 inline-block mr-2 md:block md:mr-0">
-                <a href="#" class="no-underline hover:underline text-gray-800 hover:text-blue-500">About</a>
-              </li>
-              <li class="mt-2 inline-block mr-2 md:block md:mr-0">
-                <a href="#" class="no-underline hover:underline text-gray-800 hover:text-blue-500">Policy</a>
+                <a href="{% url 'pages:about' %}" class="no-underline hover:underline text-gray-800 hover:text-blue-500">About</a>
               </li>
             </ul>
           </div>

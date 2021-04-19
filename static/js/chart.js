@@ -10,17 +10,23 @@ function get_temperature_data(url) {
         "series": [[]]
         }
       for (var i in data) {
-        chart_data["labels"].push(data[i]["timestamp"])
-        chart_data["series"][0].push(data[i]["measure"])
+        // chart_data["labels"].push(    {x: new Date(data[i]["timestamp"]), y: data[i]["measure"]}     )
+        console.log(new Date(data[i]["timestamp"]))
+        chart_data["series"][0].push({x: new Date(data[i]["timestamp"]), y: data[i]["measure"]})
       }
+
       let mainChart = new Chartist.Line('#chart1', chart_data, {
-        low: 0,
-        showArea: true,
         showPoint: false,
-        fullWidth: true
-    });
+        fullWidth: true,
+        axisX: {
+          type: Chartist.FixedScaleAxis,
+          divisor: 6,
+          labelInterpolationFnc: function(value) {
+            return moment(value).format('DD/MM HH:mm:ss');
+          }
+              },
     })
-  }
+  });}
 
 
 

@@ -5,15 +5,17 @@ from accounts.models import CustomUser
 from rest_framework.authtoken.models import Token
 import binascii
 import os
-import django.utils.timezone as tz
 from django.apps import apps
 from .forms import SensorForm, DeviceForm
 from django.http import Http404
 
 
-
 def frontpage(request):
     return render(request, "pages/index.html")
+
+
+def about(request):
+    return render(request, "pages/about.html")
 
 
 @login_required

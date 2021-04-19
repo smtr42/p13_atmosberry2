@@ -65,18 +65,7 @@
             </nav>
         </div>
 
-        <!--Dash Content -->
-        <div id="dash-content" class="bg-gray-200 py-6 lg:py-0 w-full lg:max-w-sm flex flex-wrap content-start">
-            <div class="w-1/2 lg:w-full">
-                <div class="border-2 border-gray-400 border-dashed hover:border-transparent hover:bg-white hover:shadow-xl rounded p-6 m-2 md:mx-10 md:my-6">
-                    <div class="flex flex-col items-center">
-                        <div class="flex-1">
-                            <h2 class="font-bold text-xl">You have {{ devices.count }} device(s) registered.</h2>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+
 
         <!--Graph Content -->
         <div id="main-content" class="w-full flex-1">
@@ -238,6 +227,7 @@
 {% endblock content %}
 
 {% block scripts %}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js" integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ==" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/chartist.js/latest/chartist.min.js"></script>
     <script type="application/javascript" src="{% static '/js/chart.js' %}"></script>
     <script type="application/javascript" src="{% static '/js/menu.js' %}"></script>
@@ -252,7 +242,7 @@
     <div class="container mx-auto px-8">
     <div class="w-full flex flex-col md:flex-row py-6">
         <div class="flex-1 mb-6 text-black">
-        <a class="text-blue-600 no-underline hover:no-underline font-bold text-2xl lg:text-4xl" href="#">
+        <a class="text-blue-600 no-underline hover:no-underline font-bold text-2xl lg:text-4xl" href="{% url 'pages:frontpage' %}">
             ATMOSBERRY
         </a>
         </div>
@@ -261,9 +251,6 @@
         <ul class="list-reset mb-6">
             <li class="mt-2 inline-block mr-2 md:block md:mr-0">
             <a href="#" class="no-underline hover:underline text-gray-800 hover:text-blue-500">About</a>
-            </li>
-            <li class="mt-2 inline-block mr-2 md:block md:mr-0">
-            <a href="#" class="no-underline hover:underline text-gray-800 hover:text-blue-500">Policy</a>
             </li>
         </ul>
         </div>

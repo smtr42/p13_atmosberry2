@@ -6,6 +6,7 @@ from .serializers import SensorSerializer, AddressSerializer, TemperatureSeriali
 from rest_framework.response import Response
 from .permissions import IsAuthor0rReaOnly
 from datetime import datetime, timedelta
+from django.utils import timezone
 
 
 class SensorView(generics.ListCreateAPIView):
@@ -42,8 +43,6 @@ class TemperatureView(generics.ListCreateAPIView):
     permission_classes = (IsAuthor0rReaOnly,)
 
     def get_queryset(self):
-        thetime = datetime.now() - timedelta(hours=48)
         device = Device.objects.filter(user=self.request.user)
-        return Sensor.objects.filter(device=device[0])
-
-        # return Sensor.objects.filter(device=device[0], timestamp__gte=thetime)
+        aware = timezone.now() - timedelta(hours=24)
+        return Sensor.objects.filter(device=device[0], timestamp__gte=aware)
