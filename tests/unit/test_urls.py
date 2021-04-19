@@ -21,7 +21,7 @@ def index_list_templates():
     [("", 200), (reverse("pages:frontpage"), 200)],
 )
 def test_route_anon_index_urls(client_anon, url, status, index_list_templates):
-    """ URL access for visitor and checks templates """
+    """URL access for visitor and checks templates."""
     response = client_anon.get(url)
 
     assert response.status_code == status

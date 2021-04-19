@@ -70,7 +70,9 @@ def add_device(request):
         lon = form.cleaned_data.get("lon")
         device_model.objects.create(user=user, name=device_name)
         device = device_model.objects.get(user=user, name=device_name)
-        address_model.objects.create(user=user, lat=lat, lon=lon, device=device)
+        address_model.objects.create(
+            user=user, lat=lat, lon=lon, device=device
+        )
     return dashboard(request)
 
 

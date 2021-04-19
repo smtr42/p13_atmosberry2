@@ -27,7 +27,7 @@ def test_authorized_request(api_client):
 
 @mark.django_db
 def test_get_endpoint(api_client):
-    """ URL access for visitor and checks templates """
+    """URL access for visitor and checks templates."""
     response = api_client.get(reverse("api_index"))
     data = json.loads(response.content)
     assert response.status_code == 200
@@ -44,7 +44,7 @@ def test_get_endpoint(api_client):
 
 @mark.django_db
 def test_get_loc(api_client):
-    """ URL access for visitor and checks templates """
+    """URL access for visitor and checks templates."""
     response = api_client.get(reverse("loc"))
     data = json.loads(response.content)
     assert response.status_code == 200
@@ -54,7 +54,7 @@ def test_get_loc(api_client):
 
 @mark.django_db
 def test_get_data(api_client):
-    """ URL access for visitor and checks templates """
+    """URL access for visitor and checks templates."""
 
     date = datetime.utcnow().replace(tzinfo=pytz.utc)
 
