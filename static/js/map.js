@@ -24,7 +24,7 @@ function get_map_data(url) {
   .then(response => response.json())
   .then(function(data) {
     for (var i in data) {
-      console>log("Creating markers")
+      console.log("Creating markers")
       L.marker([data[i].lat, data[i].lon]).bindPopup(lastitem).addTo(map);
     }
   })
