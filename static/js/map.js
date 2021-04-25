@@ -14,7 +14,7 @@ L.control.scale().addTo(map);
 L.marker([50.715, 1.71]).bindPopup('France').addTo(map);
 
 
-
+a = '127.0.0.1:8000'
 
 
 let url = "http://www.simteiva.fr/api/v1/loc/"
@@ -25,20 +25,10 @@ function get_map_data(url) {
   .then(function(data) {
     for (var i in data) {
       console.log("Creating markers")
-      console.log(data)
-      console.log([data[i].lat, data[i].lon])
-
-      L.marker([parseFloat(data[i].lat), parseFloat(data[i].lon)]).bindPopup().addTo(map);
+      L.marker([data[i].lon, data[i].lat]).bindPopup().addTo(map);
     }
   })
 }
 
 console.log("getting map data")
 get_map_data(url);
-
-var circle = L.circle([40.715, 1.71], {
-  color: 'red',
-  fillColor: '#f03',
-  fillOpacity: 0.5,
-  radius: 500
-}).addTo(map);
