@@ -10,7 +10,7 @@ from rest_framework.authtoken.models import Token
 
 from api.models import Device, Sensor
 
-from .forms import DeviceForm, SensorForm
+from .forms import DeviceForm
 
 logger = logging.getLogger(__name__)
 
@@ -41,7 +41,6 @@ def dashboard(request):
             "sensors": sensors,
             "token": toke,
             "device_form": DeviceForm,
-            "sensor_form": SensorForm(user),
         },
     )
 
@@ -81,15 +80,3 @@ def add_device(request):
         )
     return dashboard(request)
 
-
-@login_required
-def add_sensor(request):
-    if request.method != "POST":
-        raise Http404("Bad request")
-    user = request.user
-    form = SensorForm(user, request.POST)
-
-    if form.is_valid():
-        print(form.cleaned_data)
-        print("form is valid")
-    return dashboard(request)

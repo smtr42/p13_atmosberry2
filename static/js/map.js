@@ -20,10 +20,13 @@ function get_map_data(url) {
   fetch(url)
   .then(response => response.json())
   .then(function(data) {
+    console.log(data)
     for (var i in data) {
+      console.log([data[i].lat, data[i].lon])
+      console.log([data[i].lat, data[i].lon])
       L.marker([data[i].lat, data[i].lon]).bindPopup('Meow').addTo(map);
     }
   })
 }
-
+console.log("getting map data")
 get_map_data(url);
