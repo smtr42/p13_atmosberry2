@@ -1,12 +1,16 @@
 from . import *
 
 DEBUG = False
-SECRET_KEY = ""
-ALLOWED_HOSTS = [
-    "127.0.0.1",
-    "139.59.133.127",
-    "simteiva.fr",
-    "www.simteiva.fr",
-]
+SECRET_KEY = env('SECRET_KEY')
+ALLOWED_HOSTS = env('ALLOWED_HOSTS')
 
-DATABASES = {}
+DATABASES = {
+    "default": {
+        "ENGINE": "django.db.backends.postgresql_psycopg2",
+        "NAME": env('DATABASE_NAME'),
+        "USER": env('DATABASDATABASE_USERE_NAME'),
+        "PASSWORD": env('DATABASE_PASS'),
+        "HOST": env('DATABASE_HOST'),
+        "PORT": "5432",
+    }
+}
