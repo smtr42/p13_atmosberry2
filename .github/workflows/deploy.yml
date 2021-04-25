@@ -20,7 +20,7 @@ jobs:
           username: ${{secrets.SSH_USERNAME}}
           passphrase: ${{ secrets.PASSPHRASE }}
           privateKey: ${{ secrets.SSH_KEY}}
-          script: |
+          command: |
             cd p13_atmosberry2
             git pull
             echo "Git pull done"
