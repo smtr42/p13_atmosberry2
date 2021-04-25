@@ -20,4 +20,6 @@ jobs:
           script: |
             cd p13_atmosberry2
             git pull
-            echo "Git pull done"
+            source .venv/bin/activate
+            python manage.py collectstatic --noinput
+            echo -e "Git pull done \n" >> pull_logs.txt
