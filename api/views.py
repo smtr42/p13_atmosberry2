@@ -48,12 +48,13 @@ class TemperatureView(generics.ListCreateAPIView):
     permission_classes = (IsAuthor0rReaOnly,)
 
     def get_queryset(self):
-        print(self.request.user.id)
+        print("self req user id", self.request.user.id)
         if not self.request.user.id:
-            raise PermissionDenied(detail=None, code=None)
-
+            return None
+        #     raise PermissionDenied(detail=None, code=None)
         device = Device.objects.filter(user=self.request.user)
         aware = timezone.now() - timedelta(hours=24)
+        print(device)
         if not device:
             return None
         return Sensor.objects.filter(device=device[0], timestamp__gte=aware)

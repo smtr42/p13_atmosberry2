@@ -52,7 +52,7 @@ def refresh_token(request):
         raise Http404("Bad request")
     key = binascii.hexlify(os.urandom(20)).decode()
     # obj, created = Token.objects.filter(user=request.user).update_or_create(key=key)
-    print(request.user)
+    print("#################", request.user)
     print(key)
     obj, created = Token.objects.update_or_create(user=request.user, key=key)
     return dashboard(request)
