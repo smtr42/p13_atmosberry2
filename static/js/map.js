@@ -10,12 +10,7 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 // show the scale bar on the lower left corner
 L.control.scale().addTo(map);
 
-// show a marker on the map
-L.marker([50.715, 1.71]).bindPopup('France').addTo(map);
-
-
 a = '127.0.0.1:8000'
-
 
 let url = "http://www.simteiva.fr/api/v1/loc/"
 
@@ -25,7 +20,7 @@ function get_map_data(url) {
   .then(function(data) {
     for (var i in data) {
       console.log("Creating markers")
-      L.marker([data[i].lon, data[i].lat]).bindPopup().addTo(map);
+      L.marker([data[i].lon, data[i].lat]).bindPopup(data[i].measure).addTo(map);
     }
   })
 }
