@@ -11,20 +11,36 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 L.control.scale().addTo(map);
 
 // show a marker on the map
-// L.marker([46.715, 1.71]).bindPopup('The center of the world').addTo(map);
+L.marker([46.715, 1.71]).bindPopup('France').addTo(map);
 
 
-let url = "http://www.simteiva.fr/api/v1/loc/"
+var icon = new L.Icon.Default();
+var options = {icon: icon};
+
+
+let temp_url = "http://127.0.0.1:8000/api/v1/data/"
+
+function get_temperature_data(url) {
+  fetch(url)
+  .then(response => response.json())
+  .then(function(data) {
+      console.log(data)
+      const lastItem = data.slice(-1).pop()
+      console.log(lastItem)
+      return lastItem
+});}
+
+
+
+let url = "http://127.0.0.1:8000/api/v1/loc/"
 
 function get_map_data(url) {
   fetch(url)
   .then(response => response.json())
   .then(function(data) {
-    console.log(data)
+    lastitem = get_temperature_data(temp_url)
     for (var i in data) {
-      console.log([data[i].lat, data[i].lon])
-      console.log([data[i].lat, data[i].lon])
-      L.marker([data[i].lat, data[i].lon]).bindPopup('Meow').addTo(map);
+      L.marker([data[i].lat, data[i].lon]).bindPopup(lastitem).addTo(map);
     }
   })
 }

@@ -3,9 +3,6 @@ from django import forms
 from api.models import Device, Sensor
 
 
-
-
-
 # good
 class DeviceForm(forms.Form):
     device = forms.CharField(

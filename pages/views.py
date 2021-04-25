@@ -79,4 +79,3 @@ def add_device(request):
             user=user, lat=lat, lon=lon, device=device
         )
     return dashboard(request)
-
