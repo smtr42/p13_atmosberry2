@@ -28,7 +28,7 @@ function get_map_data(url) {
       console.log(data)
       console.log([data[i].lat, data[i].lon])
 
-      L.marker([data[i].lat, data[i].lon]).bindPopup().addTo(map);
+      L.marker([parseFloat(data[i].lat), parseFloat(data[i].lon)]).bindPopup().addTo(map);
     }
   })
 }
