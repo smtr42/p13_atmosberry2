@@ -50,7 +50,6 @@ def dashboard(request):
 def refresh_token(request):
     if request.method != "POST":
         raise Http404("Bad request")
-
     key = binascii.hexlify(os.urandom(20)).decode()
     Token.objects.filter(user=request.user).update(key=key)
     return dashboard(request)
