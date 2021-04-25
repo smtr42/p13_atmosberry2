@@ -11,7 +11,7 @@ on:
 
 jobs:
   deploy:
-    runs-on: ubuntu-latst
+    runs-on: ubuntu-latest
     steps:
       - name: deploy p13
         uses: appleboy/ssh-action@v)0.1.2
