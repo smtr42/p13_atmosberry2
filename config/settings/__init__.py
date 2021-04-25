@@ -29,7 +29,7 @@ try:
     SECRET_KEY = env("SECRET_KEY")
 except:
     SECRET_KEY = "p1-o$9l&0vl4k5t9cima%yxiv!l6m=-^2ji+letn40h^+99*b8"
-    
+
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = env("ENVIRONMENT") != "prod"
