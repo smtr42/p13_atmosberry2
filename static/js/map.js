@@ -25,6 +25,9 @@ function get_map_data(url) {
   .then(function(data) {
     for (var i in data) {
       console.log("Creating markers")
+      console.log(data)
+      console.log([data[i].lat, data[i].lon])
+
       L.marker([data[i].lat, data[i].lon]).bindPopup().addTo(map);
     }
   })
