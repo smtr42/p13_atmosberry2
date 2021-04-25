@@ -13,14 +13,27 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: deploy p13
-        uses: appleboy/ssh-action@v0.1.4
+      - name: connssh
+        uses: garygrossgarten/github-action-ssh@release
         with:
           host: ${{secrets.SSH_HOST}}
-          key: ${{secrets.SSH_KEY}}
           username: ${{secrets.SSH_USERNAME}}
-
+          passphrase: ${{ secrets.PASSPHRASE }}
+          privateKey: ${{ secrets.SSH_KEY}}
           script: |
             cd p13_atmosberry2
             git pull
             echo "Git pull done"
+            
+            
+#       - name: deploy p13
+#         uses: appleboy/ssh-action@v0.1.4
+#         with:
+#           host: ${{secrets.SSH_HOST}}
+#           key: ${{secrets.SSH_KEY}}
+#           username: ${{secrets.SSH_USERNAME}}
+
+#           script: |
+#             cd p13_atmosberry2
+#             git pull
+#             echo "Git pull done"
