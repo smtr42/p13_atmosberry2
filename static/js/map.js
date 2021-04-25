@@ -14,8 +14,12 @@ L.control.scale().addTo(map);
 L.marker([46.715, 1.71]).bindPopup('France').addTo(map);
 
 
-var icon = new L.Icon.Default();
-var options = {icon: icon};
+var circle = L.circle([46.715, 1.71], {
+  color: 'red',
+  fillColor: '#f03',
+  fillOpacity: 0.5,
+  radius: 500
+}).addTo(map);
 
 
 let temp_url = "http://127.0.0.1:8000/api/v1/data/"
