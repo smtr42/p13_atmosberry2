@@ -22,7 +22,7 @@ var circle = L.circle([46.715, 1.71], {
 }).addTo(map);
 
 
-let temp_url = "http://127.0.0.1:8000/api/v1/data/"
+let temp_url = "http://www.simteiva.fr/api/v1/data/"
 
 function get_temperature_data(url) {
   fetch(url)
@@ -36,7 +36,7 @@ function get_temperature_data(url) {
 
 
 
-let url = "http://127.0.0.1:8000/api/v1/loc/"
+let url = "http://www.simteiva.fr/api/v1/loc/"
 
 function get_map_data(url) {
   fetch(url)
