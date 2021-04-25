@@ -48,6 +48,7 @@ class TemperatureView(generics.ListCreateAPIView):
     permission_classes = (IsAuthor0rReaOnly,)
 
     def get_queryset(self):
+        print(self.request.user.id)
         if not self.request.user.id:
             raise PermissionDenied(detail=None, code=None)
 
