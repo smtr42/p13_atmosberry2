@@ -1,4 +1,5 @@
 from datetime import timedelta
+import logging
 
 from django.utils import timezone
 from rest_framework import generics
@@ -12,6 +13,7 @@ from .serializers import (
     SensorSerializer,
     TemperatureSerializer,
 )
+logger = logging.getLogger(__name__)
 
 
 class SensorView(generics.ListCreateAPIView):
@@ -36,6 +38,7 @@ class SensorView(generics.ListCreateAPIView):
 
 
 class AddressView(generics.ListCreateAPIView):
+    logger.info("geting address from API")
     serializer_class = AddressSerializer
     permission_classes = (IsAuthor0rReaOnly,)
 
@@ -44,6 +47,7 @@ class AddressView(generics.ListCreateAPIView):
 
 
 class TemperatureView(generics.ListCreateAPIView):
+    logger.info("geting temperature from API")
     serializer_class = TemperatureSerializer
     permission_classes = (IsAuthor0rReaOnly,)
 

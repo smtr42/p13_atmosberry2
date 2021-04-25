@@ -25,7 +25,7 @@ def about(request):
 
 @login_required
 def dashboard(request):
-    logger.info("################# test")
+    logger.info("Rendering Dashboard")
 
     user = request.user
     devices = Device.objects.filter(user=user).values(
@@ -48,6 +48,7 @@ def dashboard(request):
 
 @login_required
 def refresh_token(request):
+    logger.info("Refresh token launched")
     if request.method != "POST":
         raise Http404("Bad request")
     key = binascii.hexlify(os.urandom(20)).decode()
@@ -55,12 +56,15 @@ def refresh_token(request):
     print("#################", request.user)
     print(key)
     obj, created = Token.objects.update_or_create(user=request.user, key=key)
+    logger.info("Refresh token launched")
     return dashboard(request)
 
 
 @login_required
 def add_device(request):
+    logger.info("Add device launched")
     if request.method != "POST":
+        logger.warning("Bad request")
         raise Http404("Bad request")
     user = request.user
     form = DeviceForm(request.POST)

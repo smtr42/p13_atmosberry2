@@ -13,7 +13,7 @@ def test_unauthorized_request(api_client):
     print(api_client)
     url = reverse("data")
     response = api_client.get(url)
-    assert response.content == b'[]'
+    assert response.content == b"[]"
 
 
 @mark.django_db
