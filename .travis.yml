@@ -13,16 +13,7 @@ before_script:
   - sleep 3
 
 env:
-  - DJANGO_SETTINGS_MODULE="config.settings.travis"
-  - DATABASE_NAME=postgres
-  - SECRET_KEY="p1-o$9l&0vl4k5t9cima%yxiv!l6m=-^2ji+letn40h^+99*b8"
-  - DATABASE_USER=postgres
-  - DATABASE_PASS=""
-  - DATABASE_HOST=""
-  - ENVIRONMENT="dev"
-  - IP=""
-  - URL1=""
-  - URL2=""
+  - DJANGO_SETTINGS_MODULE="config.settings.travis" DATABASE_NAME=postgres SECRET_KEY="p1-o$9l&0vl4k5t9cima%yxiv!l6m=-^2ji+letn40h^+99*b8" DATABASE_USER=postgres DATABASE_PASS="" DATABASE_HOST="" ENVIRONMENT="dev" IP="" URL1="" URL2=""
 
 services:
   - postgresql
