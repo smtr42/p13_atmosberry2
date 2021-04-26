@@ -1,13 +1,11 @@
-# from django.urls import reverse
 from pytest import mark
 
 from api.models import Device, Address, Sensor
 from django.contrib.auth import get_user_model
-from django.conf import settings
 
 
 @mark.django_db
-def test_device():
+def test_user():
     user = get_user_model()
     user = user.objects.get(id=1)
     assert user.__str__() == "loggeduser"

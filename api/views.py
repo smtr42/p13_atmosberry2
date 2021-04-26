@@ -62,8 +62,6 @@ class TemperatureView(generics.ListCreateAPIView):
         sensor = Sensor.objects.filter(device=device[0], timestamp__gte=aware)
         if not sensor:
             aware = timezone.now() - timedelta(hours=168)
-            return Sensor.objects.filter(
-                device=device[0], timestamp__gte=aware
-            )
+            return Sensor.objects.filter(device=device[0], timestamp__gte=aware)
 
         return sensor

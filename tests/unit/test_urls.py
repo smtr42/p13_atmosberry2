@@ -1,10 +1,6 @@
-from datetime import datetime
-import pytz
-
 from pytest import fixture, mark
 
 from django.urls import reverse
-from api.models import Device, Address, Sensor
 
 
 @fixture

@@ -1,7 +1,6 @@
 from pytest import mark
 from django.urls import reverse
 from rest_framework.authtoken.models import Token
-from rest_framework.test import RequestsClient
 import json
 from datetime import datetime
 import pytz

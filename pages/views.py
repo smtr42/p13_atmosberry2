@@ -51,7 +51,6 @@ def refresh_token(request):
     if request.method != "POST":
         raise Http404("Bad request")
     key = binascii.hexlify(os.urandom(20)).decode()
-    # obj, created = Token.objects.filter(user=request.user).update_or_create(key=key)
     print("#################", request.user)
     print(key)
     obj, created = Token.objects.update_or_create(user=request.user, key=key)
@@ -75,7 +74,5 @@ def add_device(request):
         lon = form.cleaned_data.get("lon")
         device_model.objects.create(user=user, name=device_name)
         device = device_model.objects.get(user=user, name=device_name)
-        address_model.objects.create(
-            user=user, lat=lat, lon=lon, device=device
-        )
+        address_model.objects.create(user=user, lat=lat, lon=lon, device=device)
     return dashboard(request)

@@ -58,7 +58,7 @@ INSTALLED_APPS = [
     "rest_framework.authtoken",
     "dj_rest_auth",
     "dj_rest_auth.registration",
-    'corsheaders',
+    "corsheaders",
     "allauth",
     "allauth.account",
     "allauth.socialaccount",
@@ -120,16 +120,16 @@ CORS_ALLOWED_ORIGINS = [
     "http://localhost:8000",
     "http://127.0.0.1:8000",
     "www.simteiva.fr",
-    "simteiva.fr"
+    "simteiva.fr",
 ]
 CORS_ALLOW_HEADERS = list(default_headers) + [
-    'Access-Control-Allow-Origin',
+    "Access-Control-Allow-Origin",
 ]
 CSRF_TRUSTED_ORIGINS = [
     "http://localhost:8000",
     "http://127.0.0.1:8000",
     "www.simteiva.fr",
-    "simteiva.fr"
+    "simteiva.fr",
 ]
 
 ROOT_URLCONF = "config.urls"
