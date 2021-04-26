@@ -1,10 +1,12 @@
-from pytest import mark
-from django.urls import reverse
-from rest_framework.authtoken.models import Token
 import json
 from datetime import datetime
+
 import pytz
-from api.models import Sensor, Device
+from django.urls import reverse
+from pytest import mark
+from rest_framework.authtoken.models import Token
+
+from api.models import Device, Sensor
 
 
 @mark.django_db

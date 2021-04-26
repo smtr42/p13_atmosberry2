@@ -1,12 +1,6 @@
 from django.urls import path
 
-from .views import (
-    about,
-    add_device,
-    dashboard,
-    frontpage,
-    refresh_token,
-)
+from .views import about, add_device, dashboard, frontpage, refresh_token
 
 urlpatterns = [
     path("", frontpage, name="frontpage"),

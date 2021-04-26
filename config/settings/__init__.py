@@ -10,8 +10,9 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 
 
-from pathlib import Path
 import os
+from pathlib import Path
+
 import environ
 from corsheaders.defaults import default_headers
 

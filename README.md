@@ -28,7 +28,6 @@ Project 13 - Atmosberry
     <br />
   </p>
 
-
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 

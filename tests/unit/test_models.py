@@ -1,7 +1,7 @@
+from django.contrib.auth import get_user_model
 from pytest import mark
 
-from api.models import Device, Address, Sensor
-from django.contrib.auth import get_user_model
+from api.models import Address, Device, Sensor
 
 
 @mark.django_db

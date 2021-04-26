@@ -1,8 +1,9 @@
-from pytest import fixture
 import uuid
-from django.test import Client
-from django.core.management import call_command
+
 from django.contrib.auth import get_user_model
+from django.core.management import call_command
+from django.test import Client
+from pytest import fixture
 from rest_framework.test import APIClient
 
 
