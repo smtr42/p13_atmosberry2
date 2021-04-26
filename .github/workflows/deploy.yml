@@ -21,5 +21,6 @@ jobs:
             cd p13_atmosberry2
             git pull
             source .venv/bin/activate
+            pip install -r requirements.txt
             python manage.py collectstatic --noinput
             echo -e "Git pull done \n" >> pull_logs.txt
