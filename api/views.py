@@ -7,7 +7,11 @@ from rest_framework.response import Response
 
 from .models import Address, Device, Sensor
 from .permissions import IsAuthor0rReaOnly
-from .serializers import AddressSerializer, SensorSerializer, TemperatureSerializer
+from .serializers import (
+    AddressSerializer,
+    SensorSerializer,
+    TemperatureSerializer,
+)
 
 logger = logging.getLogger(__name__)
 

@@ -1,0 +1,15 @@
+[{
+    "model": "accounts.customuser",
+    "pk": 1,
+    "fields": {
+        "username": "loggeduser",
+        "first_name": "firstname",
+        "last_login": null,
+        "last_name": "lastname",
+        "email": "test@test.com",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2020-12-07T09:32:50.998Z",
+        "password": "!M4dygH3ZWfd0214U59OR9nlwsRJ94HUZtvQciG8y"
+    }
+} ]

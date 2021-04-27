@@ -7,7 +7,7 @@ from pytest import fixture
 from rest_framework.test import APIClient
 
 
-@fixture
+@fixture(scope="module")
 def django_db_setup(django_db_setup, django_db_blocker):
     with django_db_blocker.unblock():
         call_command("loaddata", "fixture_data.json")
