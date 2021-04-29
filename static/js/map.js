@@ -15,7 +15,7 @@ a = '127.0.0.1:8000'
 let url = "http://www.simteiva.fr/api/v1/loc/"
 
 function get_map_data(url) {
-  fetch(url)
+  fetch(url, )
   .then(response => response.json())
   .then(function(data) {
     for (var i in data) {

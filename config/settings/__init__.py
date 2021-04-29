@@ -55,11 +55,11 @@ INSTALLED_APPS = [
     "pages.apps.PagesConfig",
     "api.apps.ApiConfig",
     # Third Party
+    "corsheaders",
     "rest_framework",
     "rest_framework.authtoken",
     "dj_rest_auth",
     "dj_rest_auth.registration",
-    "corsheaders",
     "allauth",
     "allauth.account",
     "allauth.socialaccount",
@@ -80,23 +80,19 @@ AUTH_USER_MODEL = "accounts.CustomUser"
 
 LOGGING = {
     "version": 1,
-    # Version of logging
     "disable_existing_loggers": False,
-    # disable logging
-    # Handlers #############################################################
     "handlers": {
         "file": {
             "level": "INFO",
             "class": "logging.FileHandler",
             "filename": "app_log.log",
         },
-        ########################################################################
         "console": {
             "class": "logging.StreamHandler",
             "level": "INFO",
         },
     },
-    # Loggers ####################################################################
+
     "loggers": {
         "": {
             "handlers": ["file", "console"],
@@ -119,22 +115,29 @@ MIDDLEWARE = [
 
 CORS_ALLOW_ALL_ORIGINS = True
 
+
+CORS_ORIGIN_ALLOW_ALL = True
+
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:8000",
     "http://127.0.0.1:8000",
-    "www.simteiva.fr",
-    "simteiva.fr",
+    "http://www.simteiva.fr",
+    "http://simteiva.fr",
+    "https://www.simteiva.fr",
+    "https://simteiva.fr",
 ]
 
-CORS_ALLOW_HEADERS = list(default_headers) + [
-    "Access-Control-Allow-Origin",
-]
+CORS_ALLOW_HEADERS = list(default_headers)
 
 CSRF_TRUSTED_ORIGINS = [
     "http://localhost:8000",
     "http://127.0.0.1:8000",
     "www.simteiva.fr",
     "simteiva.fr",
+    "http://www.simteiva.fr",
+    "http://simteiva.fr",
+    "https://www.simteiva.fr",
+    "https://simteiva.fr",
 ]
 
 ROOT_URLCONF = "config.urls"

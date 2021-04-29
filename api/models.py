@@ -1,17 +1,11 @@
 from django.conf import settings
 from django.db import models
 
-#  admin
-#     simpleisbetter
-# firstuser & seconduser & thirduser (thirduser@mymel.io)
-# mylittlepassword
-
-# thirduser token :7518d1fb613235ee073be414607c08a8394c25fd
 # https://www.django-rest-framework.org/api-guide/authentication/
 
 
 class Device(models.Model):
-    """"""
+    """The Device, such as Raspberry zero"""
 
     name = models.CharField(max_length=50, unique=True)
     # CONSTRAINT
@@ -26,7 +20,7 @@ class Device(models.Model):
 
 
 class Address(models.Model):
-    """"""
+    """Adresse related to the Device"""
 
     lat = models.DecimalField(max_digits=9, decimal_places=6)
     lon = models.DecimalField(max_digits=9, decimal_places=6)
@@ -45,7 +39,7 @@ class Address(models.Model):
 
 
 class Sensor(models.Model):
-    """"""
+    """The sensor and its measurement"""
 
     TEMPERATURE = "T"
     HUMIDITY = "Hu"
